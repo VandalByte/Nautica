@@ -1,6 +1,6 @@
 package com.dev.nautica
 
-import android.content.Context
+import androidx.core.content.ContextCompat
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +17,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
+
+        // Set the status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.statusBarLogin)
 
         loginButton = findViewById(R.id.googleSignInBtn)
         loginButton.setOnClickListener {

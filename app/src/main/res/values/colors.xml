@@ -5,6 +5,8 @@
     <color name="signupBackgroundColor">#F5FAFE</color>
     <color name="loginBtn">#383F85</color>
     <color name="loginColorPrimary">#2A3165</color>
+    <color name="statusBarLogin">#2A3165</color>
+    <color name="statusBarSplash">#171B3E</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

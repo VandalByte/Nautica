@@ -7,6 +7,7 @@ import android.os.Looper
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.dev.nautica.welcomescreen.WelcomeActivity1
 
 class SplashActivity : AppCompatActivity() {
@@ -16,11 +17,14 @@ class SplashActivity : AppCompatActivity() {
         private const val FIRST_INSTALL_KEY = "IsFirstInstall"
     }
 
-    private val SPLASH_TIME_OUT: Long = 4000 // 4 sec
+    private val SPLASH_TIME_OUT: Long = 2000 // 2 sec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        // Set the status bar color
+        window.statusBarColor = ContextCompat.getColor(this, R.color.statusBarSplash)
 
         val splashLogo: ImageView = findViewById(R.id.splash_logo)
         val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
