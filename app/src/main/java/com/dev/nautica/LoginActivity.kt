@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // Set the status bar color
-        window.statusBarColor = ContextCompat.getColor(this, R.color.statusBarLogin)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimary)
 
         loginButton = findViewById(R.id.googleSignInBtn)
         loginButton.setOnClickListener {

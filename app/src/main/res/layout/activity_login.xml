@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/signupBackgroundColor"
+    android:background="@color/colorSurface"
     tools:context=".LoginActivity">
 
     <TextView
@@ -20,7 +20,7 @@
         android:paddingTop="0dp"
         android:paddingBottom="8dp"
         android:text=" Login"
-        android:textColor="@color/loginColorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,9 +36,9 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/sf_pro"
         android:text="Login"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimaryText"
         android:textStyle="bold"
-        app:backgroundTint="@color/loginBtn"
+        app:backgroundTint="@color/colorPrimary"
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toTopOf="@+id/googleSignInBtn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,8 @@
             android:fontFamily="@font/sf_pro"
             android:hint="   Password"
             android:importantForAccessibility="yes"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -100,7 +101,7 @@
         android:fontFamily="@font/sf_pro"
         android:paddingBottom="0dp"
         android:text="   Welcome back."
-        android:textColor="@color/loginColorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +130,8 @@
             android:fontFamily="@font/sf_pro"
             android:hint="   Email Address"
             android:importantForAccessibility="yes"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -141,7 +143,7 @@
         android:layout_marginEnd="144dp"
         android:fontFamily="@font/sf_pro"
         android:text="  Create an account"
-        android:textColor="@color/loginColorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -158,7 +160,7 @@
         android:layout_marginEnd="18dp"
         android:fontFamily="@font/sf_pro"
         android:text="Forgot password?"
-        android:textColor="@color/loginColorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"

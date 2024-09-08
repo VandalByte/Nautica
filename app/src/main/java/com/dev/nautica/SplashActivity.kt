@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         // Set the status bar color
-        window.statusBarColor = ContextCompat.getColor(this, R.color.statusBarSplash)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.colorPrimaryDark)
 
         val splashLogo: ImageView = findViewById(R.id.splash_logo)
         val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)

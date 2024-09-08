@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splashBackgroundColor">#171B3E</color>
-    <!-- Login -->
-    <color name="signupBackgroundColor">#F5FAFE</color>
-    <color name="loginBtn">#383F85</color>
-    <color name="loginColorPrimary">#2A3165</color>
-    <color name="statusBarLogin">#2A3165</color>
-    <color name="statusBarSplash">#171B3E</color>
-
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary color scheme -->
+    <color name="colorPrimary">#383F85</color>
+    <color name="colorPrimaryDark">#2A3264</color>
+    <color name="colorAccent">#DAF0FE</color>
+
+    <!-- Background and surface colors -->
+    <color name="colorBackground">#FFEEE7</color>
+    <color name="colorSurface">#FFFFFF</color>
+
+    <!-- Text colors -->
+    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorSecondaryText">#383F85</color>
+    <color name="colorTertiaryText">#EAE8FE</color>
+
 </resources>
