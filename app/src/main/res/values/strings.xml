@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Nautica</string>
+    <string name="add_reminder">Add Reminder</string>
+    <string name="menu_home">DashBoard</string>
+    <string name="menu_pets">My Pets</string>
+    <string name="menu_notifications">Reminders</string>
+    <string name="menu_settings">Settings</string>
+</resources>
