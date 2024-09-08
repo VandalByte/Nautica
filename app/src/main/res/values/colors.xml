@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="splashBackgroundColor">#171B3E</color>
+    <!-- Login -->
+    <color name="signupBackgroundColor">#F5FAFE</color>
+    <color name="loginBtn">#383F85</color>
+    <color name="loginColorPrimary">#2A3165</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
