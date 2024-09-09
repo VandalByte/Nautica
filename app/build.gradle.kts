@@ -61,5 +61,9 @@ dependencies {
     implementation ("androidx.annotation:annotation:1.3.0")
     //viewmodel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    implementation ("androidx.fragment:fragment-ktx:1.4.0")
+
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.maps.android:android-maps-utils:2.4.0")
+    implementation("androidx.fragment:fragment-ktx:1.5.7")
+    implementation ("com.google.android.material:material:1.9.0")
 }

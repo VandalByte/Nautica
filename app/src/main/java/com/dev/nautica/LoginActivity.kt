@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         // Show a toast message
         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
         // Navigate to MainActivity
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, HeatmapActivity::class.java)
         startActivity(intent)
         finish() // Finish LoginActivity to prevent user from returning here
     }
