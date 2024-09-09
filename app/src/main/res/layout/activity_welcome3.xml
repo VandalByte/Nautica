@@ -5,15 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg3"
+    android:background="@drawable/welcome1"
     tools:context=".welcomescreen.WelcomeActivity3">
 
     <Button
         android:id="@+id/button"
         android:layout_width="219dp"
         android:layout_height="53dp"
-        android:layout_marginTop="446dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="593dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="19dp"
         android:backgroundTint="#214566"
         android:onClick="onNextButtonClick"
         android:text="Get Started"
@@ -28,19 +30,16 @@
         android:id="@+id/textView2"
         android:layout_width="322dp"
         android:layout_height="107dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="665dp"
         android:fontFamily="@font/poppins"
         android:text="By continuing, you agree to our Terms of Service and Privacy Policy."
         android:textAlignment="center"
         android:textColor="#214566"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

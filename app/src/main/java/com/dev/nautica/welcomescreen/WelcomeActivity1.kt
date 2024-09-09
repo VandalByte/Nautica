@@ -15,7 +15,7 @@ class WelcomeActivity1 : AppCompatActivity() {
 
     fun onNextButtonClick(view: android.view.View) {
         Log.i(TAG, "Next button clicked ")
-        val intent = Intent(this, WelcomeActivity2::class.java)
+        val intent = Intent(this, WelcomeActivity3::class.java)
         startActivity(intent)
     }
 }
