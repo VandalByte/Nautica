@@ -3,6 +3,7 @@ package com.dev.nautica
 import android.app.AlertDialog
 import android.location.Geocoder
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.TileOverlayOptions
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
 import com.google.maps.android.heatmaps.WeightedLatLng
@@ -26,9 +28,16 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heatmap) // Ensure this matches the XML filename
 
+        val bottomSheet: View = findViewById(R.id.sheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.peekHeight = 500
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
         // Initialize the SearchView
         searchView = findViewById(R.id.search_view)
         setupSearchView()
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         val mapFragment = supportFragmentManager
