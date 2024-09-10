@@ -15,7 +15,7 @@ data class WeatherResponse(
 
 data class DisplayData(
     val location: String,
-    val max_temp: Double,
+    val temp: Double,
     val condition: ConditionData
 )
 

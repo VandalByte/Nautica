@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.SearchView
+import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -38,8 +39,9 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
 
         // Set up the autocomplete adapter
         val beachNames = beachData.keys.toList()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, beachNames)
+        val adapter = ArrayAdapter(this, R.layout.dropdown_item, beachNames)
         autoCompleteTextView.setAdapter(adapter)
+
 
         // Handle selection from dropdown
         autoCompleteTextView.setOnItemClickListener { parent, _, position, _ ->
@@ -165,7 +167,8 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                         if (response.isSuccessful) {
                             response.body()?.let { apiResponse ->
                                 val location = apiResponse.response.display.location
-                                val maxTemp = apiResponse.response.display.max_temp
+                                // TODO: change the max_temp to temp
+                                val maxTemp = apiResponse.response.display.temp
                                 val suitability = apiResponse.response.suitability_percentage
 
                                 AlertDialog.Builder(this@HeatmapActivity)
@@ -213,7 +216,7 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                         if (response.isSuccessful) {
                             response.body()?.let { apiResponse ->
                                 val location = apiResponse.response.display.location
-                                val maxTemp = apiResponse.response.display.max_temp
+                                val maxTemp = apiResponse.response.display.temp
                                 val suitability = apiResponse.response.suitability_percentage
 
                                 // Show place name, coordinates, and additional weather data

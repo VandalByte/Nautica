@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Floating SearchView for location search with rounded corners -->
-    <!-- Floating AutoCompleteTextView for location search -->
     <AutoCompleteTextView
         android:id="@+id/auto_complete_search"
         android:layout_width="0dp"
@@ -13,6 +11,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_search_background"
+        android:popupBackground="@color/white"
         android:elevation="4dp"
         android:fontFamily="@font/sf_pro"
         android:hint="Search for a beach..."
@@ -22,7 +21,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
 
     <!-- Google Maps Fragment -->
