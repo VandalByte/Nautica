@@ -3,6 +3,8 @@ package com.dev.nautica
 import android.app.AlertDialog
 import android.location.Geocoder
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.SearchView
 import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -10,6 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
@@ -20,15 +23,29 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
 
     private lateinit var mMap: GoogleMap
     private lateinit var heatmapProvider: HeatmapTileProvider
-    private lateinit var searchView: SearchView
+    private lateinit var autoCompleteTextView: AutoCompleteTextView
+    private lateinit var beachData: HashMap<String, BeachInfo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_heatmap) // Ensure this matches the XML filename
 
-        // Initialize the SearchView
-        searchView = findViewById(R.id.search_view)
-        setupSearchView()
+        // Initialize AutoCompleteTextView for search
+        autoCompleteTextView = findViewById(R.id.auto_complete_search)
+
+        // Initialize beach data
+        initializeBeachData()
+
+        // Set up the autocomplete adapter
+        val beachNames = beachData.keys.toList()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, beachNames)
+        autoCompleteTextView.setAdapter(adapter)
+
+        // Handle selection from dropdown
+        autoCompleteTextView.setOnItemClickListener { parent, _, position, _ ->
+            val selectedBeachName = parent.getItemAtPosition(position) as String
+            searchLocation(selectedBeachName)
+        }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         val mapFragment = supportFragmentManager
@@ -114,34 +131,34 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
         // Move the camera to a central location
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(20.5937, 78.9629), 5f)) // Zoom level 5
     }
-    private fun setupSearchView() {
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    searchLocation(it)
-                }
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return false
-            }
-        })
+    private fun initializeBeachData() {
+        beachData = hashMapOf(
+            "Marina Beach" to BeachInfo("Chennai", LatLng(13.0475, 80.2824)),
+            "Juhu Beach" to BeachInfo("Mumbai", LatLng(19.0968, 72.8265)),
+            "Varkala Beach" to BeachInfo("Kerala", LatLng(8.7379, 76.6986)),
+            // Add more beach data...
+        )
     }
-    private fun searchLocation(location: String) {
-        val geocoder = Geocoder(this, Locale.getDefault())
-        val addresses = geocoder.getFromLocationName(location, 1)
 
-        if (addresses?.isNotEmpty() == true) {
-            val address = addresses[0]
-            val latLng = LatLng(address.latitude, address.longitude)
+    private fun searchLocation(beachName: String) {
+        val beachInfo = beachData[beachName]
+        beachInfo?.let {
+            val latLng = it.latLng
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f)) // Zoom level as needed
+            // Move the camera to the selected beach location
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
 
-            // Get the current hour for the 'time' query parameter
+            // Add a marker at the selected beach location
+            mMap.addMarker(
+                MarkerOptions()
+                    .position(latLng)
+                    .title(beachName)
+            )
+
+            // Make API request to get weather and suitability data (unchanged)
             val currentHour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
 
-            // Make API request to get weather and suitability data
             ApiClient.weatherApiService.getWeatherData(latLng.latitude, latLng.longitude, currentHour)
                 .enqueue(object : retrofit2.Callback<ApiResponse> {
                     override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
@@ -151,17 +168,14 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                                 val maxTemp = apiResponse.response.display.max_temp
                                 val suitability = apiResponse.response.suitability_percentage
 
-                                // Show search result and weather data
                                 AlertDialog.Builder(this@HeatmapActivity)
-                                    .setTitle("Search Result")
+                                    .setTitle("Beach Info")
                                     .setMessage("""
-                                    Found: ${address.featureName}
-                                    Latitude: ${address.latitude}
-                                    Longitude: ${address.longitude}
-                                    Location: $location
-                                    Max Temp: $maxTemp°C
-                                    Suitability: $suitability%
-                                """.trimIndent())
+                                        Beach: $beachName
+                                        Location: ${it.placeName}
+                                        Max Temp: $maxTemp°C
+                                        Suitability: $suitability%
+                                    """.trimIndent())
                                     .setPositiveButton("OK", null)
                                     .show()
                             }
@@ -176,12 +190,6 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                             .show()
                     }
                 })
-        } else {
-            AlertDialog.Builder(this)
-                .setTitle("Search Result")
-                .setMessage("No results found for \"$location\"")
-                .setPositiveButton("OK", null)
-                .show()
         }
     }
 
@@ -236,5 +244,5 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                 })
         }
     }
-
+    data class BeachInfo(val placeName: String, val latLng: LatLng)
 }

@@ -64,6 +64,7 @@ dependencies {
     // google maps
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.maps.android:android-maps-utils:2.4.0")
+    implementation("com.google.android.libraries.places:places:3.5.0")
     implementation("androidx.fragment:fragment-ktx:1.5.7")
     implementation ("com.google.android.material:material:1.9.0")
     // API stuff
