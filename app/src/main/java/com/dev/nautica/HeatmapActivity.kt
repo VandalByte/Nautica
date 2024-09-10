@@ -130,22 +130,52 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
     }
     private fun searchLocation(location: String) {
         val geocoder = Geocoder(this, Locale.getDefault())
-        val addresses = geocoder.getFromLocationName(location, 1) // Returns a nullable list
+        val addresses = geocoder.getFromLocationName(location, 1)
 
-        // Safely check if the list is not null and has at least one address
         if (addresses?.isNotEmpty() == true) {
-            val address = addresses[0] // Safe to access the first element
-
+            val address = addresses[0]
             val latLng = LatLng(address.latitude, address.longitude)
 
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f)) // Zoom level as needed
 
-            // Optionally show a dialog with the search result
-            AlertDialog.Builder(this)
-                .setTitle("Search Result")
-                .setMessage("Found: ${address.featureName} \nLatitude: ${address.latitude} \nLongitude: ${address.longitude}")
-                .setPositiveButton("OK", null)
-                .show()
+            // Get the current hour for the 'time' query parameter
+            val currentHour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+
+            // Make API request to get weather and suitability data
+            ApiClient.weatherApiService.getWeatherData(latLng.latitude, latLng.longitude, currentHour)
+                .enqueue(object : retrofit2.Callback<ApiResponse> {
+                    override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
+                        if (response.isSuccessful) {
+                            response.body()?.let { apiResponse ->
+                                val location = apiResponse.response.display.location
+                                val maxTemp = apiResponse.response.display.max_temp
+                                val suitability = apiResponse.response.suitability_percentage
+
+                                // Show search result and weather data
+                                AlertDialog.Builder(this@HeatmapActivity)
+                                    .setTitle("Search Result")
+                                    .setMessage("""
+                                    Found: ${address.featureName}
+                                    Latitude: ${address.latitude}
+                                    Longitude: ${address.longitude}
+                                    Location: $location
+                                    Max Temp: $maxTemp°C
+                                    Suitability: $suitability%
+                                """.trimIndent())
+                                    .setPositiveButton("OK", null)
+                                    .show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: retrofit2.Call<ApiResponse>, t: Throwable) {
+                        AlertDialog.Builder(this@HeatmapActivity)
+                            .setTitle("Error")
+                            .setMessage("Failed to fetch weather data: ${t.message}")
+                            .setPositiveButton("OK", null)
+                            .show()
+                    }
+                })
         } else {
             AlertDialog.Builder(this)
                 .setTitle("Search Result")
@@ -155,23 +185,56 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
         }
     }
 
+
     override fun onMapClick(latLng: LatLng) {
-        // Use Geocoder to get the place name from latitude and longitude
         val geocoder = Geocoder(this, Locale.getDefault())
         val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
 
-        // If the location has an address, display it
         addresses?.firstOrNull()?.let { address ->
             val placeName = address.featureName ?: "Unknown Place"
-            val latitude = String.format("%.6f", latLng.latitude) // Format latitude
-            val longitude = String.format("%.6f", latLng.longitude) // Format longitude
+            val latitude = latLng.latitude
+            val longitude = latLng.longitude
 
-            // Show place name and coordinates as a Toast
-            AlertDialog.Builder(this)
-                .setTitle("Location Details")
-                .setMessage("Place: $placeName\nLatitude: $latitude\nLongitude: $longitude")
-                .setPositiveButton("OK", null)
-                .show()
+            // Get the current hour for the 'time' query parameter
+            val currentHour = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY)
+
+            // Make API request
+            ApiClient.weatherApiService.getWeatherData(latitude, longitude, currentHour)
+                .enqueue(object : retrofit2.Callback<ApiResponse> {
+                    override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
+                        if (response.isSuccessful) {
+                            response.body()?.let { apiResponse ->
+                                val location = apiResponse.response.display.location
+                                val maxTemp = apiResponse.response.display.max_temp
+                                val suitability = apiResponse.response.suitability_percentage
+
+                                // Show place name, coordinates, and additional weather data
+                                AlertDialog.Builder(this@HeatmapActivity)
+                                    .setTitle("Location Details")
+                                    .setMessage("""
+                                    Place: $placeName
+                                    Latitude: ${String.format("%.4f", latitude)}
+                                    Longitude: ${String.format("%.4f", longitude)}
+                                    Location: $location
+                                    Max Temp: $maxTemp°C
+                                    Suitability: $suitability%
+                                """.trimIndent())
+                                    .setPositiveButton("OK", null)
+                                    .show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: retrofit2.Call<ApiResponse>, t: Throwable) {
+                        // Handle error
+                        AlertDialog.Builder(this@HeatmapActivity)
+                            .setTitle("Error")
+                            .setMessage("Failed to fetch weather data: ${t.message}")
+                            .setPositiveButton("OK", null)
+                            .show()
+                    }
+                })
         }
     }
+
 }
