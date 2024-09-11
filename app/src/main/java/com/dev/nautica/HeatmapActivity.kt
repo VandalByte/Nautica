@@ -5,6 +5,7 @@ import android.location.Geocoder
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.view.View
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.TileOverlayOptions
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
 import com.google.maps.android.heatmaps.WeightedLatLng
@@ -48,6 +50,11 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
             val selectedBeachName = parent.getItemAtPosition(position) as String
             searchLocation(selectedBeachName)
         }
+        val bottomSheet: View = findViewById(R.id.sheet)
+        val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.peekHeight = 500
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
         val mapFragment = supportFragmentManager
