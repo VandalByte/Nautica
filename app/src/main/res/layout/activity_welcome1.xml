@@ -8,15 +8,15 @@
     tools:context=".welcomescreen.WelcomeActivity1">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="350dp"
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="25dp"
-        android:fontFamily="@font/poppins"
-        android:text="Welcome to NAUTICA."
+        android:fontFamily="@font/poppins_bold"
+        android:text="Welcome to"
         android:textAlignment="center"
         android:textColor="#214566"
         android:textSize="25sp"
@@ -27,19 +27,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.388" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="410dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="25dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="NAUTICA"
+        android:textAlignment="center"
+        android:textColor="#214566"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.388" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="157dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="95dp"
+        android:layout_width="219dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="570dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="19dp"
         android:backgroundTint="#214566"
         android:onClick="onNextButtonClick"
         android:text="Next"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
