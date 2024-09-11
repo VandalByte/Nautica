@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Search Bar -->
     <AutoCompleteTextView
         android:id="@+id/auto_complete_search"
         android:layout_width="match_parent"
@@ -23,14 +24,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
     <!-- Google Maps Fragment -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <!-- Bottom Sheet -->
@@ -41,16 +41,152 @@
         android:layout_marginTop="100dp"
         android:background="@drawable/rounded"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="500dp"
+        app:behavior_peekHeight="300dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-        <!-- ImageView inside Bottom Sheet -->
+        <!-- Weather Icon -->
         <ImageView
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:scaleType="centerCrop"
             android:src="@drawable/baseline_remove_24" />
+
+        <!-- Weather Data Layout -->
+
+        <ImageView
+            android:id="@+id/rounded_background"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:elevation="100dp" />
+
+        <ImageView
+
+            android:id="@+id/weather_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_weather_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="100dp">
+
+            <!-- Location -->
+            <TextView
+                android:id="@+id/location_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: Dummy Location"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro" />
+
+            <!-- Temperature -->
+            <TextView
+                android:id="@+id/temperature_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperature: 25°C"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro" />
+
+            <!-- Water Temperature -->
+            <TextView
+                android:id="@+id/water_temp_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Water Temp: 22°C"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro" />
+
+            <!-- Average Humidity -->
+            <TextView
+                android:id="@+id/avg_humidity_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avg Humidity: 60%"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro" />
+
+            <!-- Wind Speed -->
+            <TextView
+                android:id="@+id/wind_speed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind Speed: 5 km/h"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro" />
+
+            <!-- Sunrise and Sunset -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <!-- Sunrise Icon and Time -->
+                <ImageView
+                    android:id="@+id/sunrise_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sunrise"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/sunrise_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunrise: 06:00 AM"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro" />
+
+                <!-- Sunset Icon and Time -->
+                <ImageView
+                    android:id="@+id/sunset_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_sunset"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="4dp" />
+
+                <TextView
+                    android:id="@+id/sunset_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sunset: 06:30 PM"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/sf_pro" />
+
+            </LinearLayout>
+
+            <!-- Suitability -->
+            <TextView
+                android:id="@+id/suitability_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suitability: 85%"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
