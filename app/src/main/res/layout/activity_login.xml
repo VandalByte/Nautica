@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSurface"
+    android:background="@color/signupBackgroundColor"
     tools:context=".LoginActivity">
 
     <TextView
@@ -16,11 +16,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="77dp"
         android:layout_marginEnd="123dp"
-        android:fontFamily="@font/sf_pro"
+        android:fontFamily="@font/sf_bol"
         android:paddingTop="0dp"
         android:paddingBottom="8dp"
         android:text=" Login"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/loginColorPrimary"
         android:textSize="48sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,16 +30,16 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/sf_pro"
+        android:fontFamily="@font/poppins_bold"
         android:text="Login"
-        android:textColor="@color/colorPrimaryText"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:backgroundTint="@color/colorPrimary"
-        app:cornerRadius="24dp"
+        app:backgroundTint="@color/loginBtn"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toTopOf="@+id/googleSignInBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,12 +47,14 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/googleSignInBtn"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="227dp"
         android:layout_marginEnd="8dp"
-        android:fontFamily="@font/sf_pro"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingLeft="100dp"
         android:text="Continue with Google"
+        android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:backgroundTint="@color/white"
@@ -66,12 +68,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView6"
         app:strokeColor="@color/black"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="0.5dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutPassword"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -86,33 +88,33 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:fontFamily="@font/sf_pro"
+            android:background="@drawable/rounded"
             android:hint="   Password"
             android:importantForAccessibility="yes"
-            android:inputType="textPassword"
-            android:textColor="@color/black" />
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="199dp"
         android:layout_height="48dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginEnd="233dp"
-        android:fontFamily="@font/sf_pro"
+        android:fontFamily="@font/sf_bol"
         android:paddingBottom="0dp"
         android:text="   Welcome back."
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/loginColorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintHorizontal_bias="0.390"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -127,11 +129,11 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
+            android:background="@drawable/rounded"
             android:fontFamily="@font/sf_pro"
             android:hint="   Email Address"
             android:importantForAccessibility="yes"
-            android:inputType="textEmailAddress"
-            android:textColor="@color/black" />
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -143,7 +145,7 @@
         android:layout_marginEnd="144dp"
         android:fontFamily="@font/sf_pro"
         android:text="  Create an account"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/loginColorPrimary"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,11 +158,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/sf_pro"
         android:text="Forgot password?"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/loginColorPrimary"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayoutPassword"
