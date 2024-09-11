@@ -25,6 +25,9 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Google Maps Fragment -->
+
+    <!-- Bottom Sheet -->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -33,7 +36,6 @@
         android:layout_marginTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!-- Bottom Sheet -->
     <FrameLayout
         android:id="@+id/sheet"
         android:layout_width="match_parent"
@@ -42,6 +44,8 @@
         android:background="@drawable/rounded"
         app:behavior_hideable="false"
         app:behavior_peekHeight="300dp"
+        app:layout_anchor="@+id/sheet"
+        app:layout_anchorGravity="center"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <!-- Weather Icon -->
@@ -56,137 +60,247 @@
 
         <ImageView
             android:id="@+id/rounded_background"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:elevation="100dp" />
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
+            android:elevation="0dp"
+            android:src="@drawable/rounded_background" />
 
         <ImageView
 
             android:id="@+id/weather_icon"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="start"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="105dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_weather_icon" />
+        <ImageView
+            android:id="@+id/rounded_pill"
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="65dp"
+            android:elevation="0dp"
+            android:src="@drawable/rounded_pill" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="100dp">
+        <ImageView
+            android:id="@+id/rounded_pill1"
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="160dp"
+            android:elevation="0dp"
+            android:src="@drawable/rounded_pill" />
+        <ImageView
+            android:id="@+id/rounded_pill2"
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="43dp"
+            android:layout_marginTop="225dp"
+            android:elevation="0dp"
+            android:src="@drawable/whitecircle" />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="375dp"
+            android:layout_marginLeft="45dp"
+            android:text="KM/H"
+            android:textSize="23dp"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginLeft="45dp"
+            android:text="Wind Speed"
+            android:textSize="23dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginLeft="45dp"
+            android:text="27"
+            android:textSize="55dp"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="230dp"
+            android:text="Water Temperature"
+            android:textSize="15dp"
+            />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="290dp"
+            android:layout_marginLeft="225dp"
+            android:text="32°"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="355dp"
+            android:layout_marginLeft="212dp"
+            android:text="Avg Humidity"
+            android:elevation="200dp"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            />
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="375dp"
+            android:layout_marginLeft="222dp"
+            android:text="60%"
+            android:elevation="200dp"
+            android:textSize="15dp"
+            android:textAlignment="center"
+            />
 
-            <!-- Location -->
-            <TextView
-                android:id="@+id/location_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location: Dummy Location"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro" />
+        <ImageView
+            android:id="@+id/rounded_pill3"
+            android:layout_width="150dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="255dp"
 
-            <!-- Temperature -->
-            <TextView
-                android:id="@+id/temperature_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Temperature: 25°C"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro" />
+            android:src="@drawable/rounded_pill" />
 
-            <!-- Water Temperature -->
-            <TextView
-                android:id="@+id/water_temp_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Water Temp: 22°C"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro" />
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="480dp"
+            android:elevation="40dp"
 
-            <!-- Average Humidity -->
-            <TextView
-                android:id="@+id/avg_humidity_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Avg Humidity: 60%"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro" />
+            android:src="@drawable/line" />
 
-            <!-- Wind Speed -->
-            <TextView
-                android:id="@+id/wind_speed_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wind Speed: 5 km/h"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro" />
 
-            <!-- Sunrise and Sunset -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+        <ImageView
 
-                <!-- Sunrise Icon and Time -->
-                <ImageView
-                    android:id="@+id/sunrise_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_sunrise"
-                    android:layout_marginEnd="4dp" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="230dp"
+            android:layout_marginTop="163dp"
+            android:elevation="0dp"
+            android:src="@drawable/temp"
+            />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="50dp"
+            android:text="Kovalam"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="#FFFFFF"
 
-                <TextView
-                    android:id="@+id/sunrise_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunrise: 06:00 AM"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/sf_pro" />
+            />
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="95dp"
+            android:text="Cloudy"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:textColor="@color/colorPrimary"
 
-                <!-- Sunset Icon and Time -->
-                <ImageView
-                    android:id="@+id/sunset_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_sunset"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="4dp" />
+            />
 
-                <TextView
-                    android:id="@+id/sunset_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sunset: 06:30 PM"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/sf_pro" />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="28°"
+            android:layout_marginLeft="280dp"
+            android:textSize="45sp"
+            android:layout_marginTop="155dp"
+            />
 
-            </LinearLayout>
+        <ImageView
 
-            <!-- Suitability -->
-            <TextView
-                android:id="@+id/suitability_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Suitability: 85%"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/sf_pro"
-                android:layout_marginTop="8dp" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="438dp"
+            android:elevation="0dp"
+            android:src="@drawable/sunrise2"
+            />
+        <ImageView
 
-        </LinearLayout>
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="270dp"
+            android:layout_marginTop="438dp"
+            android:elevation="0dp"
+            android:src="@drawable/sunset2"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="06:12 PM"
+            android:layout_marginLeft="250dp"
+            android:textSize="23sp"
+            android:layout_marginTop="490dp"
+            android:elevation="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="05:58 AM"
+            android:layout_marginLeft="70dp"
+            android:textSize="23sp"
+            android:layout_marginTop="490dp"
+            android:elevation="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="28°"
+            android:layout_marginLeft="280dp"
+            android:textSize="45sp"
+            android:layout_marginTop="155dp"
+            />
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="85%"
+            android:layout_marginLeft="165dp"
+            android:textSize="45sp"
+            android:layout_marginTop="565dp"
+            android:textColor="@color/colorPrimary"
+            />
+        <TextView
+            android:layout_width="400dp"
+            android:layout_height="70dp"
+            android:text="Suitability Score"
+            android:layout_marginLeft="10dp"
+            android:textSize="30sp"
+            android:layout_marginTop="530dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            />
+
+
 
     </FrameLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
