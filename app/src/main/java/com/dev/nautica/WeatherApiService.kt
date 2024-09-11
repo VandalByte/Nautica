@@ -15,7 +15,15 @@ data class WeatherResponse(
 
 data class DisplayData(
     val location: String,
-    val max_temp: Double,
+    val temp: Double,
+    val waterTemp: Double,
+    val avgHumidity: Double,
+    val windSpeed: Double,
+    val cloud: Double,
+    val uv: Double,
+    val windDeg: Double,
+    val sunrise: String,
+    val sunset: String,
     val condition: ConditionData
 )
 

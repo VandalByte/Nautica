@@ -17,4 +17,10 @@
     <color name="colorSecondaryText">#383F85</color>
     <color name="colorTertiaryText">#EAE8FE</color>
 
+    <color name="blue">#3366CC</color>
+
+    <color name="gray">#7A7A7A</color>
+
+
+
 </resources>

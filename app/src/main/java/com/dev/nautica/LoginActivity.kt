@@ -3,6 +3,7 @@ package com.dev.nautica
 import androidx.core.content.ContextCompat
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
@@ -45,8 +46,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToMainActivity() {
-        // Show a toast message
-        Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+        // Create and show the first Toast
+        val firstToast = Toast.makeText(this, "Logging In...", Toast.LENGTH_LONG)
+        firstToast.show()
+
+        // After 2 seconds, create and show the second Toast
+        Handler(mainLooper).postDelayed({
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_LONG).show()
+        }, 2000)
+
         // Navigate to MainActivity
         val intent = Intent(this, HeatmapActivity::class.java)
         startActivity(intent)
