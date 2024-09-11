@@ -489,7 +489,7 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                             response.body()?.let { apiResponse ->
 //                                val location = apiResponse.response.display.location
                                 val temp = apiResponse.response.display.temp
-                                val suitability = apiResponse.response.suitability
+                                val suitability = apiResponse.response.suitability_percentage
 
                                 AlertDialog.Builder(this@HeatmapActivity)
                                     .setTitle("Beach Info")
@@ -538,7 +538,7 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                                 // response data from API call
                                 val location = apiResponse.response.display.location
                                 val temp = apiResponse.response.display.temp
-                                val suitability = apiResponse.response.suitability
+                                val suitability = apiResponse.response.suitability_percentage
 
                                 // Show place name, coordinates, and additional weather data
                                 AlertDialog.Builder(this@HeatmapActivity)

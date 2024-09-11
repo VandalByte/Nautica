@@ -10,7 +10,7 @@ data class ApiResponse(
 
 data class WeatherResponse(
     val display: DisplayData,
-    val suitability: Int
+    val suitability_percentage: Int
 )
 
 data class DisplayData(
