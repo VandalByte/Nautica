@@ -480,17 +480,16 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                     override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
                         if (response.isSuccessful) {
                             response.body()?.let { apiResponse ->
-                                val location = apiResponse.response.display.location
-                                // TODO: change the max_temp to temp
-                                val maxTemp = apiResponse.response.display.temp
-                                val suitability = apiResponse.response.suitability_percentage
+//                                val location = apiResponse.response.display.location
+                                val temp = apiResponse.response.display.temp
+                                val suitability = apiResponse.response.suitability
 
                                 AlertDialog.Builder(this@HeatmapActivity)
                                     .setTitle("Beach Info")
                                     .setMessage("""
                                         Beach: $beachName
                                         Location: ${it.placeName}
-                                        Max Temp: $maxTemp°C
+                                        Temp: $temp°C
                                         Suitability: $suitability%
                                     """.trimIndent())
                                     .setPositiveButton("OK", null)
@@ -529,19 +528,20 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                     override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
                         if (response.isSuccessful) {
                             response.body()?.let { apiResponse ->
+                                // response data from API call
                                 val location = apiResponse.response.display.location
-                                val maxTemp = apiResponse.response.display.temp
-                                val suitability = apiResponse.response.suitability_percentage
+                                val temp = apiResponse.response.display.temp
+                                val suitability = apiResponse.response.suitability
 
                                 // Show place name, coordinates, and additional weather data
                                 AlertDialog.Builder(this@HeatmapActivity)
                                     .setTitle("Location Details")
                                     .setMessage("""
                                     Place: $placeName
-                                    Latitude: ${String.format("%.4f", latitude)}
-                                    Longitude: ${String.format("%.4f", longitude)}
+                                    Latitude: ${String.format("%.6f", latitude)}
+                                    Longitude: ${String.format("%.6f", longitude)}
                                     Location: $location
-                                    Max Temp: $maxTemp°C
+                                    Temp: $temp°C
                                     Suitability: $suitability%
                                 """.trimIndent())
                                     .setPositiveButton("OK", null)

@@ -10,12 +10,20 @@ data class ApiResponse(
 
 data class WeatherResponse(
     val display: DisplayData,
-    val suitability_percentage: Int
+    val suitability: Int
 )
 
 data class DisplayData(
     val location: String,
     val temp: Double,
+    val waterTemp: Double,
+    val avgHumidity: Double,
+    val windSpeed: Double,
+    val cloud: Double,
+    val uv: Double,
+    val windDeg: Double,
+    val sunrise: String,
+    val sunset: String,
     val condition: ConditionData
 )
 
