@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         val firstToast = Toast.makeText(this, "Logging In...", Toast.LENGTH_LONG)
         firstToast.show()
 
-        // After 2 seconds, create and show the second Toast
+
         Handler(mainLooper).postDelayed({
             Toast.makeText(this, "Login successful!", Toast.LENGTH_LONG).show()
         }, 2000)

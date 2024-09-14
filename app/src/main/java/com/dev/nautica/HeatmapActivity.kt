@@ -487,9 +487,23 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                     override fun onResponse(call: retrofit2.Call<ApiResponse>, response: retrofit2.Response<ApiResponse>) {
                         if (response.isSuccessful) {
                             response.body()?.let { apiResponse ->
+                                val displayData = apiResponse.response.display
+                                val suitability = apiResponse.response.suitability_percentage
+
+                                // Values added to the Views
+//                                findViewById<TextView>(R.id.sunrise_text).text = displayData?.sunrise ?: "N/A"                  // sunrise
+                                findViewById<TextView>(R.id.temperature).text = displayData?.temp?.toString() ?: "N/A"     // temperature
+                                findViewById<TextView>(R.id.watertemp).text = displayData?.waterTemp?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.suitablility).text = suitability?.toString() ?: "N/A"           // suitability
+                                findViewById<TextView>(R.id.place).text = displayData?.location?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.avghumidity).text = displayData?.avgHumidity?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.windspeed).text = displayData?.windSpeed?.toString() ?: "N/A" // water temp
+
+
 //                                val location = apiResponse.response.display.location
                                 val temp = apiResponse.response.display.temp
-                                val suitability = apiResponse.response.suitability_percentage
+//                                val suitability = apiResponse.response.suitability_percentage
+
 
                                 AlertDialog.Builder(this@HeatmapActivity)
                                     .setTitle("Beach Info")
@@ -539,10 +553,14 @@ class HeatmapActivity : FragmentActivity(), OnMapReadyCallback, GoogleMap.OnMapC
                                 val suitability = apiResponse.response.suitability_percentage
 
                                 // Values added to the Views
-                                findViewById<TextView>(R.id.sunrise_text).text = displayData?.sunrise ?: "N/A"                  // sunrise
-                                findViewById<TextView>(R.id.temperature_text).text = displayData?.temp?.toString() ?: "N/A"     // temperature
-                                findViewById<TextView>(R.id.water_temp_text).text = displayData?.waterTemp?.toString() ?: "N/A" // water temp
-                                findViewById<TextView>(R.id.suitability_text).text = suitability?.toString() ?: "N/A"           // suitability
+//                                findViewById<TextView>(R.id.sunrise_text).text = displayData?.sunrise ?: "N/A"                  // sunrise
+                                findViewById<TextView>(R.id.temperature).text = displayData?.temp?.toString() ?: "N/A"     // temperature
+                                findViewById<TextView>(R.id.watertemp).text = displayData?.waterTemp?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.suitablility).text = suitability?.toString() ?: "N/A"           // suitability
+                                findViewById<TextView>(R.id.place).text = displayData?.location?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.avghumidity).text = displayData?.avgHumidity?.toString() ?: "N/A" // water temp
+                                findViewById<TextView>(R.id.windspeed).text = displayData?.windSpeed?.toString() ?: "N/A" // water temp
+
 
 
                                 // response data from API call
